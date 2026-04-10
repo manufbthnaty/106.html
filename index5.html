@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal SENAI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+
+body{
+background:#eef4ff;
+color:#222;
+}
+
+/* HOME */
+.hero{
+height:60vh;
+background:linear-gradient(rgba(0,74,173,0.8),rgba(62,166,255,0.8)),
+url('https://images.unsplash.com/photo-1581091215367-59ab6b5d1f4b') center/cover;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:16px;
+margin-bottom:20px;
+}
+
+.links button{
+margin:8px;
+padding:10px 18px;
+border:none;
+background:white;
+color:#004aad;
+font-weight:bold;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.links button:hover{
+transform:scale(1.05);
+}
+
+/* SECTIONS */
+.section{
+display:none;
+padding:30px;
+animation:fade 0.5s;
+}
+
+.active{display:block;}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1;}
+}
+
+/* CARDS */
+.card{
+background:white;
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.card img{
+width:120px;
+height:80px;
+object-fit:cover;
+border-radius:8px;
+}
+
+/* TEXTO */
+.card-text{
+font-size:14px;
+}
+
+/* QUIZ */
+.quiz button{
+display:block;
+margin:10px 0;
+padding:10px;
+width:100%;
+background:#004aad;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.resultado{
+margin-top:20px;
+padding:15px;
+background:white;
+border-radius:10px;
+}
+
+/* BOTÃO */
+.voltar{
+margin-top:20px;
+padding:10px;
+background:#004aad;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div class="hero" id="home">
+<h1>Portal de Apoio SENAI</h1>
+<p>Recursos para alunos e professores</p>
+
+<div class="links">
+<button onclick="ir('recursos')">Recursos</button>
+<button onclick="ir('quiz')">Quiz</button>
+</div>
+</div>
+
+<!-- RECURSOS -->
+<div id="recursos" class="section">
+<h2>📚 Recursos</h2>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644">
+<div class="card-text">
+<b>📘 Estudos</b><br>
+Organize um cronograma, revise diariamente e pratique exercícios.
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978">
+<div class="card-text">
+<b>💼 Carreira</b><br>
+Monte um currículo e desenvolva habilidades práticas.
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f">
+<div class="card-text">
+<b>💻 Tecnologia</b><br>
+Aprenda HTML, CSS e JavaScript e crie projetos.
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc">
+<div class="card-text">
+<b>🧑‍🏫 Professores</b><br>
+Use atividades práticas e incentive participação.
+</div>
+</div>
+
+<button class="voltar" onclick="voltar()">⬅ Voltar</button>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="section">
+<h2>🧠 Como você está se sentindo?</h2>
+
+<div class="quiz">
+<button onclick="quiz('ansioso')">😰 Ansioso</button>
+<button onclick="quiz('cansado')">😴 Cansado</button>
+<button onclick="quiz('motivado')">🔥 Motivado</button>
+<button onclick="quiz('perdido')">🤯 Perdido</button>
+</div>
+
+<div id="res" class="resultado"></div>
+
+<button class="voltar" onclick="voltar()">⬅ Voltar</button>
+</div>
+
+<script>
+
+/* NAVEGAÇÃO */
+function ir(sec){
+document.getElementById("home").style.display="none";
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.getElementById(sec).classList.add("active");
+}
+
+function voltar(){
+document.getElementById("home").style.display="flex";
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+}
+
+/* QUIZ */
+function quiz(tipo){
+let r=document.getElementById("res");
+
+if(tipo=="ansioso"){
+r.innerHTML="Respire fundo, organize seu tempo e faça pausas.";
+}
+if(tipo=="cansado"){
+r.innerHTML="Descanse e cuide da sua energia.";
+}
+if(tipo=="motivado"){
+r.innerHTML="Use essa motivação para alcançar seus objetivos!";
+}
+if(tipo=="perdido"){
+r.innerHTML="Comece pelo básico e avance aos poucos.";
+}
+
+}
+
+</script>
+
+</body>
+</html>
