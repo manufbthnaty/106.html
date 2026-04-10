@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>França na Copa do Mundo</title>
+  <title>França na Copa do Mundo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    .reset-btn{
+  margin-top:20px;
+  padding:12px 22px;
+  border-radius:20px;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+  color:white;
+  background: linear-gradient(135deg, #b21f2d, #ff4d4d);
+  transition:0.3s;
+}
+
+.reset-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-dark: #05070d;
+      --bg-mid: #0b1220;
+      --blue: #0d3b8e;
+      --white: #f8fbff;
+      --red: #b21f2d;
+      --text: #ffffff;
+      --muted: #c7cfdb;
+      --line: rgba(255,255,255,0.12);
+      --glass: rgba(255,255,255,0.08);
+      --glass-2: rgba(255,255,255,0.04);
+      --shadow: 0 24px 60px rgba(0,0,0,0.35);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        linear-gradient(90deg,
+          rgba(13,59,142,0.30) 0%,
+          rgba(13,59,142,0.12) 22%,
+          rgba(255,255,255,0.05) 48%,
+          rgba(178,31,45,0.10) 74%,
+          rgba(178,31,45,0.26) 100%
+        ),
+        radial-gradient(circle at 12% 18%, rgba(13,59,142,0.24), transparent 24%),
+        radial-gradient(circle at 50% 8%, rgba(255,255,255,0.12), transparent 18%),
+        radial-gradient(circle at 86% 18%, rgba(178,31,45,0.22), transparent 24%),
+        radial-gradient(circle at 18% 82%, rgba(255,255,255,0.06), transparent 20%),
+        linear-gradient(135deg, #030509 0%, #08101c 38%, #0f1624 70%, #04060b 100%);
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(90px);
+      z-index: 0;
+    }
+
+    body::before {
+      width: 360px;
+      height: 360px;
+      left: -120px;
+      top: 60px;
+      background: rgba(13,59,142,0.18);
+    }
+
+    body::after {
+      width: 340px;
+      height: 340px;
+      right: -100px;
+      bottom: 60px;
+      background: rgba(178,31,45,0.16);
+    }
+
+    .flag-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.16;
+      background:
+        linear-gradient(90deg,
+          rgba(0, 85, 164, 0.85) 0%,
+          rgba(0, 85, 164, 0.85) 33.33%,
+          rgba(255,255,255,0.30) 33.33%,
+          rgba(255,255,255,0.30) 66.66%,
+          rgba(239,65,53,0.80) 66.66%,
+          rgba(239,65,53,0.80) 100%
+        );
+      mix-blend-mode: screen;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.20));
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.20));
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glass {
+      background: linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px) saturate(135%);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent 36%, transparent 70%, rgba(255,255,255,0.05));
+      pointer-events: none;
+    }
+
+    .glass::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      pointer-events: none;
+    }
+
+    header {
+      position: sticky;
+      top: 14px;
+      z-index: 1000;
+      padding-top: 14px;
+    }
+
+    .nav-shell {
+      border-radius: 999px;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 24px;
+    }
+
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .menu a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: .25s ease;
+      border: 1px solid transparent;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .hero {
+      padding: 88px 0 42px;
+    }
+
+    .hero-box {
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+      min-height: 360px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #fff;
+      font-size: 0.92rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 4.6vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -1.4px;
+      margin-bottom: 18px;
+      color: #fff;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      max-width: 760px;
+    }
+
+    .hero-photo {
+      min-height: 290px;
+      border-radius: 28px;
+      border: 1px dashed rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      color: rgba(255,255,255,0.82);
+      font-weight: 700;
+      background:
+        linear-gradient(135deg, rgba(13,59,142,0.20), rgba(255,255,255,0.08), rgba(178,31,45,0.20));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
+    }
+
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: -0.4px;
+    }
+
+    .highlights {
+      padding: 10px 0 34px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      padding: 24px 18px;
+      min-height: 160px;
+      transition: .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.24);
+    }
+
+    .card small {
+      display: block;
+      color: rgba(255,255,255,0.84);
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .timeline {
+      padding: 10px 0 36px;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .timeline-item {
+      border-radius: 24px;
+      padding: 24px 20px;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .year {
+      font-size: 1.65rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .timeline-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.95rem;
+    }
+
+    .content-section {
+      padding: 14px 0 34px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .content-card {
+      border-radius: 30px;
+      padding: 30px;
+    }
+
+    .content-card h3 {
+      font-size: 1.42rem;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .content-card p {
+      color: var(--muted);
+      line-height: 1.84;
+      margin-bottom: 14px;
+    }
+
+    .content-card ul {
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.84;
+    }
+
+    .content-card li {
+      margin-bottom: 10px;
+    }
+
+    .photo-box {
+      margin-top: 22px;
+      min-height: 230px;
+      border-radius: 24px;
+      border: 1px dashed rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, rgba(13,59,142,0.18), rgba(255,255,255,0.06), rgba(178,31,45,0.18));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      color: rgba(255,255,255,0.82);
+      font-weight: 700;
+    }
+
+    .gallery {
+      padding: 8px 0 34px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-item {
+      min-height: 220px;
+      border-radius: 24px;
+      border: 1px dashed rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, rgba(13,59,142,0.18), rgba(255,255,255,0.06), rgba(178,31,45,0.18));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      color: rgba(255,255,255,0.82);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 0 0 54px;
+    }
+
+    .footer-shell {
+      border-radius: 30px;
+      padding: 34px 26px 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 14px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 10px;
+      transition: .25s ease;
+    }
+
+    .footer-col a:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: #9eabbd;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1050px) {
+      .hero-box,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      header {
+        top: 10px;
+      }
+
+      .nav {
+        flex-direction: column;
+        justify-content: center;
+        padding: 16px 18px;
+      }
+
+      .hero-box {
+        padding: 30px 22px;
+      }
+
+      .cards,
+      .timeline-grid,
+      .gallery-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flag-overlay"></div>
+
+  <header>
+    <div class="container">
+      <div class="nav-shell glass">
+        <div class="nav">
+          <a href="#" class="logo">FFF®️</a>
+
+          <nav class="menu">
+            <a href="#" class="active">Início</a>
+            <a href="#historia">História</a>
+            <a href="#copas">Copas</a>
+            <a href="#galeria">Galeria</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box glass fade-up">
+          <div>
+            <span class="badge">Seleção Francesa na Copa do Mundo</span>
+            <h1>França em Copas do Mundo</h1>
+            <p>
+              Um site com visual inspirado na França, reunindo os principais momentos da seleção francesa
+              em Copas do Mundo, seus títulos, finais históricas e a construção de uma das maiores potências
+              do futebol mundial.
+            </p>
+          </div>
+
+          <div class="hero-photo glass">
+        <img src="frança.jpg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights" id="copas">
+      <div class="container">
+        <h2 class="section-title fade-up">Momentos marcantes</h2>
+
+        <div class="cards">
+          <div class="card glass fade-up">
+            <small>Primeiro título</small>
+            <h3>1998</h3>
+            <p>Campeã do mundo em casa, com uma final histórica contra o Brasil.</p>
+          </div>
+
+          <div class="card glass fade-up">
+            <small>Vice-campeã</small>
+            <h3>2006</h3>
+            <p>Chegada à final com Zidane liderando uma campanha memorável.</p>
+          </div>
+
+          <div class="card glass fade-up">
+            <small>Segundo título</small>
+            <h3>2018</h3>
+            <p>França volta ao topo do mundo com uma equipe jovem e dominante.</p>
+          </div>
+
+          <div class="card glass fade-up">
+            <small>Nova final</small>
+            <h3>2022</h3>
+            <p>Vice-campeã após uma das finais mais emocionantes da história.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline">
+      <div class="container">
+        <h2 class="section-title fade-up">Linha do tempo nas Copas</h2>
+
+        <div class="timeline-grid">
+          <div class="timeline-item glass fade-up">
+            <div class="year">1930s</div>
+            <h4>Primeiras participações</h4>
+            <p>A França esteve presente na primeira Copa do Mundo e ajudou a construir a história inicial do torneio.</p>
+          </div>
+
+          <div class="timeline-item glass fade-up">
+            <div class="year">1998</div>
+            <h4>Consagração em casa</h4>
+            <p>O país sediou a competição e conquistou seu primeiro título mundial, entrando na elite do futebol.</p>
+          </div>
+
+          <div class="timeline-item glass fade-up">
+            <div class="year">2018</div>
+            <h4>França campeã novamente</h4>
+            <p>A seleção mostrou força coletiva, talento e velocidade para levantar o segundo troféu.</p>
+          </div>
+
+          <div class="timeline-item glass fade-up">
+            <div class="year">2022</div>
+            <h4>Final inesquecível</h4>
+            <p>Mesmo ficando com o vice, a França confirmou sua regularidade entre as maiores seleções do mundo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="historia">
+      <div class="container">
+        <div class="content-grid">
+          <div class="content-card glass fade-up">
+            <h3>A França e a Copa do Mundo</h3>
+            <p>
+              A França construiu uma trajetória de enorme respeito na história das Copas do Mundo. Sua seleção
+              combinou diferentes gerações de craques, momentos de superação e campanhas que marcaram o futebol.
+            </p>
+            <p>
+              O grande ponto de virada veio em <strong>1998</strong>, quando o país sediou o torneio e conquistou
+              o primeiro título mundial. Duas décadas depois, em <strong>2018</strong>, a seleção voltou a ser campeã,
+              reafirmando a sua força internacional.
+            </p>
+            <p>
+              Além dos títulos, a França também chegou à final em <strong>2006</strong> e <strong>2022</strong>, o que mostra
+              a constância do país em competir no mais alto nível.
+            </p>
+
+            <ul>
+              <li><strong>1998:</strong> campeã do mundo.</li>
+              <li><strong>2006:</strong> vice-campeã.</li>
+              <li><strong>2018:</strong> campeã do mundo.</li>
+              <li><strong>2022:</strong> vice-campeã.</li>
+            </ul>
+
+            <div class="photo-box glass">
+              França campeã da Copa
+            </div>
+          </div>
+
+          <div class="content-card glass fade-up">
+            <h3>Craques e legado</h3>
+            <p>
+              A história da França em Copas também é marcada por grandes nomes. Jogadores como Zidane,
+              Henry, Deschamps, Platini e Mbappé ajudaram a construir uma identidade vencedora.
+            </p>
+            <p>
+              O país se tornou referência por unir talento técnico, força física, disciplina tática e
+              excelente formação de atletas. Isso fez da França uma seleção constantemente favorita.
+            </p>
+            <p>
+              Hoje, o legado francês nas Copas vai muito além dos títulos: ele representa tradição,
+              renovação e protagonismo contínuo no futebol mundial.
+            </p>
+
+            <div class="photo-box glass">
+              ESPAÇO PARA FOTO<br>
+              craque histórico da França
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="galeria">
+      <div class="container">
+        <h2 class="section-title fade-up">Galeria</h2>
+
+        <div class="gallery-grid">
+          <div class="gallery-item glass fade-up">
+            taça/comemoração
+          </div>
+          <div class="gallery-item glass fade-up">
+            ESPAÇO PARA FOTO 2<br>
+            seleção em campo
+          </div>
+          <div class="gallery-item glass fade-up">
+            ESPAÇO PARA FOTO 3<br>
+            torcida francesa
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-shell glass">
+        <div class="footer-grid">
+
+        <div class="footer-bottom">
+          ©️ 2026 França na Copa do Mundo — estilo francês
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
+<section style="padding:60px 0;">
+  <div class="container">
+    <div class="glass quiz-box">
+
+      
+</script>
+<section style="padding:60px 0;">
+  <div class="container">
+    <div class="glass quiz-box">
+
+
+</script>
+</body>
+<section style="padding:60px 0;">
+  <div class="container">
+    <div class="glass quiz-box">
+
+      <h2 class="section-title">🎮 Quiz da França</h2>
+
+      <!-- INICIO -->
+      <div id="startScreen">
+        <input type="text" id="playerName" placeholder="Digite seu nome..." />
+        <button onclick="iniciar()">Começar</button>
+      </div>
+
+      <!-- JOGO -->
+      <div id="quizGame" style="display:none;">
+        <div class="top-bar">
+          <span id="progress"></span>
+          <span id="score"></span>
+        </div>
+
+        <h3 id="question"></h3>
+        <div id="answers"></div>
+      </div>
+
+      <!-- FINAL -->
+      <div id="finalScreen" style="display:none;">
+        <h3 id="finalText"></h3>
+
+        <button onclick="reiniciarQuiz()" style="margin-top:20px;">
+          🔄 Jogar novamente
+        </button>
+      </div>
+
+      <!-- RANKING -->
+      <h3 style="margin-top:30px;">🏆 Ranking</h3>
+      <ul id="ranking"></ul>
+
+      <button class="reset-btn" onclick="limparRanking()">
+        🗑️ Resetar Ranking
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.quiz-box{
+  border-radius:30px;
+  padding:40px;
+  text-align:center;
+}
+
+#playerName{
+  padding:15px;
+  width:80%;
+  border-radius:15px;
+  border:none;
+  outline:none;
+  font-size:1rem;
+  margin-bottom:15px;
+}
+
+button{
+  padding:14px 26px;
+  border-radius:25px;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+  background: linear-gradient(135deg,#0d3b8e,#b21f2d);
+  color:white;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.08);
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.reset-btn{
+  margin-top:20px;
+  background: linear-gradient(135deg,#b21f2d,#ff4d4d);
+}
+
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+  color:#ccc;
+}
+
+#question{
+  font-size:1.4rem;
+  margin-bottom:25px;
+}
+
+.answer{
+  margin:10px auto;
+  padding:15px;
+  width:80%;
+  border-radius:18px;
+  background:rgba(255,255,255,0.08);
+  cursor:pointer;
+  transition:.25s;
+}
+
+.answer:hover{
+  background:rgba(255,255,255,0.2);
+  transform:scale(1.05);
+}
+
+.correct{
+  background:rgba(0,200,0,0.4) !important;
+}
+
+.wrong{
+  background:rgba(200,0,0,0.4) !important;
+}
+</style>
+
+<script>
+const perguntas = [
+
+  { pergunta: "Em que ano a França ganhou sua primeira Copa?", opcoes: ["1998","2006","2018"], correta: 0 },
+  { pergunta: "Contra quem foi a final de 1998?", opcoes: ["Argentina","Brasil","Alemanha"], correta: 1 },
+  { pergunta: "Em que ano foi o segundo título?", opcoes: ["2018","2014","2022"], correta: 0 },
+  { pergunta: "A França foi vice em 2022 contra:", opcoes: ["Brasil","Argentina","Espanha"], correta: 1 },
+  { pergunta: "Qual jogador atual aparece no site?", opcoes: ["Mbappé","Messi","Neymar"], correta: 0 },
+
+  { pergunta: "A França sediou qual Copa?", opcoes: ["2002","1998","2010"], correta: 1 },
+  { pergunta: "Quantas finais a França jogou até 2022?", opcoes: ["2","3","4"], correta: 2 },
+  { pergunta: "Quem foi destaque na final de 1998?", opcoes: ["Zidane","Henry","Mbappé"], correta: 0 },
+  { pergunta: "A geração de 2018 era conhecida por:", opcoes: ["Experiência","Juventude","Defesa"], correta: 1 },
+  { pergunta: "A França ficou conhecida por ser:", opcoes: ["Irregular","Constante em alto nível","Fraca"], correta: 1 }
+
+];
+
+let atual = 0;
+let pontos = 0;
+let nome = "";
+
+/* ENTER */
+document.addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    iniciar();
+  }
+});
+
+function iniciar(){
+  nome = document.getElementById("playerName").value || "Anônimo";
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("quizGame").style.display = "block";
+  mostrarPergunta();
+}
+
+function mostrarPergunta(){
+  const q = perguntas[atual];
+
+  document.getElementById("progress").innerText = `${atual+1}/${perguntas.length}`;
+  document.getElementById("score").innerText = `Pontos: ${pontos}`;
+
+  document.getElementById("question").innerText = q.pergunta;
+  const answers = document.getElementById("answers");
+  answers.innerHTML = "";
+
+  q.opcoes.forEach((op, i) => {
+    const div = document.createElement("div");
+    div.className = "answer";
+    div.innerText = op;
+
+    div.onclick = () => selecionar(i);
+
+    answers.appendChild(div);
+  });
+}
+
+function selecionar(escolha){
+  const correta = perguntas[atual].correta;
+  const opcoes = document.querySelectorAll(".answer");
+
+  opcoes.forEach((el, i)=>{
+    if(i === correta) el.classList.add("correct");
+    else el.classList.add("wrong");
+  });
+
+  if(escolha === correta) pontos++;
+
+  setTimeout(()=>{
+    atual++;
+    if(atual < perguntas.length){
+      mostrarPergunta();
+    } else {
+      finalizar();
+    }
+  }, 800);
+}
+
+function finalizar(){
+  document.getElementById("quizGame").style.display = "none";
+  document.getElementById("finalScreen").style.display = "block";
+
+  document.getElementById("finalText").innerText =
+    `${nome}, você acertou ${pontos}/${perguntas.length} 🔥`;
+
+  salvarRanking(nome, pontos);
+}
+
+function reiniciarQuiz(){
+  atual = 0;
+  pontos = 0;
+
+  document.getElementById("finalScreen").style.display = "none";
+  document.getElementById("startScreen").style.display = "block";
+}
+
+function salvarRanking(nome, pontos){
+  let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+
+  ranking.push({nome,pontos});
+  ranking.sort((a,b)=>b.pontos-a.pontos);
+
+  localStorage.setItem("ranking", JSON.stringify(ranking));
+
+  mostrarRanking();
+}
+
+function mostrarRanking(){
+  const lista = document.getElementById("ranking");
+  lista.innerHTML = "";
+
+  let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+
+  ranking.slice(0,5).forEach((r,i)=>{
+    const li = document.createElement("li");
+    li.innerText = `${i+1}º - ${r.nome} (${r.pontos})`;
+    lista.appendChild(li);
+  });
+}
+
+function limparRanking(){
+  localStorage.removeItem("ranking");
+
+  const lista = document.getElementById("ranking");
+  if(lista){
+    lista.innerHTML = "";
+  }
+}
+
+mostrarRanking();
+</script>
+</html>
