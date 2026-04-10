@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>França nas Copas do Mundo</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0a0f2c;
+    color: rgb(240, 255, 255);
+}
+
+/* HEADER COM VÍDEO (substituiu o background) */
+header {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* vídeo de fundo */
+header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* gradiente escuro por cima */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+/* mantém texto visível */
+header h1,
+header p {
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    opacity: 0.85;
+}
+
+.container {
+    padding: 50px 10%;
+}
+
+.card {
+    background: #12183a;
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    transition: 0.6s ease;
+    opacity: 0;
+    transform: translateY(40px);
+    box-shadow: 0 10px 25px rgba(76, 76, 76, 0.3);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+h2 {
+    color: #ff3838;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: #464ea4;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #002654;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.extra {
+    display: none;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #050816;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <!-- VÍDEO DA BANDEIRA -->
+    <video autoplay muted loop playsinline>
+        <source src="video/bandeira.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <h1>𝐅𝐫𝐚𝐧𝐜̧𝐚 𝐧𝐚 𝐂𝐨𝐩𝐚 𝐝𝐨 𝐌𝐮𝐧𝐝𝐨</h1>
+    <p>Curiosidades da Seleção Francesa</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Primeira Copa do Mundo
+    1930</h2>
+<p>A frança jogou a primeira copa da história</p>
+<button onclick="toggle(this)">Saiba mais</button>
+<div class="extra">
+<p>A seleção francesa tem um papel histórico no futebol mundial, pois participou da primeira edição da Copa do Mundo em 1930,
+     realizada no Uruguai.
+     <p> Além disso, um jogador francês, Lucien Laurent,
+      marcou o primeiro gol da história das Copas.</p>
+<p>Esse feito colocou a França diretamente nos registros iniciais do maior torneio de futebol do planeta,
+     mostrando que o país sempre esteve presente</p> 
+     <p>desde o começo da competição,
+      mesmo antes de se tornar uma potência.</p>
+
+
+</div>
+</div>
+
+<div class="card">
+<h2>Título em casa (França campeã)
+    1998</h2>
+<p>Campeã Mundial Jogando em Casa em 1998</p>
+<button onclick="toggle(this)">Saiba mais</button>
+<div class="extra">
+<p>A França conquistou seu primeiro título mundial em 1998, quando sediou o torneio.</p>
+     <p>Jogar em casa trouxe uma enorme pressão, mas também uma grande motivação.</p>
+     <p>Na final, venceu o Brasil por 3 a 0, com dois gols de Zidane.</p>
+     <p>Esse título foi marcante não apenas pelo futebol apresentado, mas também pelo impacto social, já que a equipe simbolizava</p>
+     <p>diversidade e união no país, sendo chamada de “Black-Blanc-Beur”.</p>
+
+
+</div>
+</div>
+
+<div class="card">
+<h2>Fracasso na fase de grupos
+    2002</h2>
+<p>Um dos Maiores Fracassos da História Aconteceu em 2002</p>
+<button onclick="toggle(this)">Saiba mais</button>
+<div class="extra">
+<p>Depois de conquistar a Copa de 1998 e a Eurocopa de 2000, a França chegou como favorita absoluta em 2002.</p>
+<p>No entanto, teve uma campanha desastrosa: foi eliminada ainda na fase de grupos, sem marcar nenhum gol.</p>
+<p>Esse desempenho surpreendeu o mundo e entrou para a história como uma das</p>
+<p>maiores quedas de uma seleção campeã na edição seguinte do torneio.</p>
+
+
+</div>
+</div>
+
+<div class="card">
+<h2>Destaque de Mbappé jovem
+    2018</h2>
+<p>Revelou um dos Jogadores mais Jovens a Brilhar em Copas</p>
+<button onclick="toggle(this)">Saiba mais</button>
+<div class="extra">
+<p>Na Copa do Mundo de 2018, Kylian Mbappé se destacou como</p>
+<p>uma das maiores revelações do futebol mundial.</p>
+<p>Com apenas 19 anos, ele foi decisivo em várias partidas e marcou gol na final contra a Croácia.</p>
+<p>Com isso, tornou-se o jogador mais jovem a marcar em uma final de Copa desde Pelé em 1958,</p>
+<p>consolidando seu nome como um dos grandes talentos da nova geração.</p>
+
+
+</div>
+</div>
+
+<div class="card">
+<h2>Final consecutiva (vice-campeã)
+    2022</h2>
+<p>A França Chegou a Duas Finais Seguidas (2018 e 2022)</p>
+<button onclick="toggle(this)">Saiba mais</button>
+<div class="extra">
+<p>A seleção francesa mostrou sua força recente ao chegar em duas finais consecutivas de Copa do Mundo.</p>
+<p>Após conquistar o título em 2018, voltou à final em 2022 contra a Argentina. Apesar de perder nos pênaltis,</p>
+<p>a campanha foi impressionante e reforçou a consistência da equipe. Poucas seleções conseguiram manter</p>
+<p>esse nível de desempenho por tanto tempo, o que coloca a França entre as grandes potências do futebol</p>
+<p>moderno.</p>
+
+</div>
+</div>
+
+</div>
+
+<footer>
+©️ 2026 - Projeto Web França Na Copa
+</footer>
+
+<script>
+function toggle(btn) {
+    const extra = btn.nextElementSibling;
+    extra.style.display = extra.style.display === "block" ? "none" : "block";
+}
+
+const cards = document.querySelectorAll('.card');
+
+function reveal() {
+    const trigger = window.innerHeight * 0.85;
+
+    cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if (top < trigger) {
+            card.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
+</script>
+
+</body>
+</html>
