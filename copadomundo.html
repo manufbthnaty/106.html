@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Copa do Mundo</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI', sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:
+radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 25%),
+radial-gradient(circle at bottom right, rgba(255,255,255,0.05), transparent 20%),
+linear-gradient(135deg,#020617,#0f172a 45%, #172554 100%);
+color:white;
+min-height:100vh;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 42px;
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(2,6,23,0.55);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+font-size:1.2rem;
+font-weight:800;
+letter-spacing:1px;
+}
+
+nav{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:#cbd5e1;
+text-decoration:none;
+transition:0.3s;
+font-size:0.95rem;
+}
+
+nav a:hover{
+color:white;
+}
+
+.btn{
+text-decoration:none;
+color:white;
+padding:10px 18px;
+border-radius:999px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
+
+.btn:hover{
+background:rgba(255,255,255,0.14);
+transform:translateY(-1px);
+}
+
+.hero{
+padding:80px 40px 40px;
+max-width:1100px;
+margin:0 auto;
+}
+
+.hero-badge{
+display:inline-block;
+margin-bottom:18px;
+padding:9px 16px;
+border-radius:999px;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+color:#dbeafe;
+font-size:0.9rem;
+backdrop-filter:blur(10px);
+}
+
+.hero h1{
+font-size:3rem;
+line-height:1.05;
+margin-bottom:18px;
+max-width:850px;
+}
+
+.hero p{
+color:#cbd5e1;
+max-width:760px;
+line-height:1.8;
+font-size:1rem;
+}
+
+.section{
+max-width:1100px;
+margin:0 auto;
+padding:30px 40px 50px;
+}
+
+.section h2{
+font-size:2rem;
+margin-bottom:12px;
+}
+
+.section-sub{
+color:#cbd5e1;
+margin-bottom:28px;
+line-height:1.8;
+max-width:860px;
+}
+
+.glass{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+padding:28px;
+border-radius:28px;
+line-height:1.9;
+color:#e2e8f0;
+}
+
+.timeline{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.card{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:24px;
+padding:22px;
+transition:0.35s ease;
+overflow:hidden;
+box-shadow:0 12px 30px rgba(0,0,0,0.16);
+}
+
+.card:hover{
+transform:translateY(-2px);
+background:rgba(255,255,255,0.09);
+box-shadow:0 18px 36px rgba(0,0,0,0.22);
+}
+
+.card-top{
+display:grid;
+grid-template-columns:110px 1.2fr 1fr;
+gap:16px;
+align-items:center;
+}
+
+.year{
+display:inline-flex;
+justify-content:center;
+align-items:center;
+padding:10px 16px;
+min-height:46px;
+border-radius:999px;
+background:rgba(255,255,255,0.09);
+border:1px solid rgba(255,255,255,0.12);
+font-weight:700;
+color:white;
+}
+
+.champion{
+font-size:1.08rem;
+font-weight:700;
+}
+
+.host{
+color:#cbd5e1;
+font-size:0.96rem;
+text-align:right;
+}
+
+.extra{
+max-height:0;
+opacity:0;
+overflow:hidden;
+transition:max-height 0.45s ease, opacity 0.35s ease, margin-top 0.35s ease;
+margin-top:0;
+}
+
+.card:hover .extra{
+max-height:500px;
+opacity:1;
+margin-top:18px;
+}
+
+.extra-inner{
+display:grid;
+grid-template-columns:1.3fr 0.9fr;
+gap:18px;
+border-top:1px solid rgba(255,255,255,0.08);
+padding-top:18px;
+}
+
+.details{
+color:#e2e8f0;
+line-height:1.8;
+}
+
+.details strong{
+color:white;
+}
+
+.image{
+min-height:150px;
+border-radius:20px;
+border:1px dashed rgba(255,255,255,0.16);
+background:linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#dbeafe;
+padding:18px;
+font-size:0.92rem;
+}
+
+footer{
+max-width:1100px;
+margin:0 auto;
+padding:10px 40px 50px;
+color:#cbd5e1;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:16px;
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:800px){
+.hero h1{
+font-size:2.2rem;
+}
+
+.card-top{
+grid-template-columns:1fr;
+}
+
+.host{
+text-align:left;
+}
+
+.extra-inner{
+grid-template-columns:1fr;
+}
+
+header{
+padding:18px 20px;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.hero,
+.section,
+footer{
+padding-left:20px;
+padding-right:20px;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">FIFA ARCHIVE</div>
+
+<nav>
+<a href="#inicio">Início</a>
+<a href="#historia">História</a>
+<a href="#campeoes">Copas</a>
+</nav>
+
+<a href="#campeoes" class="btn">Ver timeline</a>
+</header>
+
+<section class="hero" id="inicio">
+<div class="hero-badge">Copa do Mundo • história e campeões</div>
+<h1>Uma linha do tempo completa com todas as Copas do Mundo.</h1>
+<p>
+A Copa do Mundo se tornou um dos maiores eventos do planeta, reunindo tradição,
+emoção, rivalidade, memória afetiva e impacto cultural em escala global. Abaixo,
+você pode explorar a história do torneio e ver todas as edições de 1930 até 2022
+em uma timeline interativa.
+</p>
+</section>
+
+<section class="section" id="historia">
+<h2>Sobre a Copa</h2>
+<p class="section-sub">
+O torneio cresceu ao longo das décadas e se transformou em um símbolo mundial
+do esporte, capaz de marcar gerações inteiras com jogos, craques e finais históricas.
+</p>
+
+<div class="glass">
+Desde sua criação, a Copa do Mundo se consolidou como um evento que mobiliza
+milhões de pessoas em diferentes continentes. O torneio não representa apenas
+a disputa por um troféu: ele envolve identidade nacional, memória afetiva,
+rivalidades históricas, celebrações coletivas e momentos que passam de geração
+em geração. Muitos dos capítulos mais lembrados do futebol nasceram em Copas,
+como gols decisivos, atuações lendárias, zebras históricas e campanhas que
+marcaram países inteiros.
+<br><br>
+A competição se tornou mundialmente conhecida por unir espetáculo, emoção e
+alcance global. Em cada edição, o torneio chama a atenção de torcedores,
+jornalistas, marcas, artistas e governantes, tornando-se também uma vitrine
+internacional para o país-sede. Atualmente, a Copa continua sendo extremamente
+importante porque movimenta a economia, fortalece a imagem de nações, incentiva
+o turismo, promove intercâmbio cultural e mantém viva a paixão pelo futebol
+em escala planetária.
+<br><br>
+Mais do que um campeonato, a Copa do Mundo é um acontecimento histórico e social.
+Ela mostra como o esporte pode aproximar povos diferentes, criar narrativas
+inesquecíveis e influenciar a cultura contemporânea.
+</div>
+</section>
+
+<section class="section" id="campeoes">
+<h2>Todas as Copas do Mundo</h2>
+<p class="section-sub">
+Passe o mouse em cada card para abrir mais detalhes e um espaço reservado
+para imagem daquela edição.
+</p>
+
+<div class="timeline">
+
+<div class="card">
+<div class="card-top">
+<div class="year">1930</div>
+<div class="champion">Uruguai</div>
+<div class="host">Sede: Uruguai</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Uruguai<br>
+<strong>Vice:</strong> Argentina<br>
+<strong>Final:</strong> Uruguai 4 x 2 Argentina<br>
+<strong>Destaque:</strong> foi a primeira Copa do Mundo da história.
+</div>
+<img src="uruguai30.jpg.jpeg">Espaço para imagem da Copa de 1930</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1934</div>
+<div class="champion">Itália</div>
+<div class="host">Sede: Itália</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Itália<br>
+<strong>Vice:</strong> Tchecoslováquia<br>
+<strong>Final:</strong> Itália 2 x 1 Tchecoslováquia<br>
+<strong>Destaque:</strong> primeira Copa em formato eliminatório desde o início.
+</div>
+<img src="italia34.jpg.jpeg">Espaço para imagem da Copa de 1934</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1938</div>
+<div class="champion">Itália</div>
+<div class="host">Sede: França</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Itália<br>
+<strong>Vice:</strong> Hungria<br>
+<strong>Final:</strong> Itália 4 x 2 Hungria<br>
+<strong>Destaque:</strong> a Itália tornou-se bicampeã mundial.
+</div>
+<img src="italia38.jpg.jpeg">Espaço para imagem da Copa de 1938</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1950</div>
+<div class="champion">Uruguai</div>
+<div class="host">Sede: Brasil</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Uruguai<br>
+<strong>Vice:</strong> Brasil<br>
+<strong>Jogo decisivo:</strong> Uruguai 2 x 1 Brasil<br>
+<strong>Destaque:</strong> edição marcada pelo famoso Maracanazo.
+</div>
+<img src="uruguai50.jpg.jpeg">Espaço para imagem da Copa de 1950</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1954</div>
+<div class="champion">Alemanha Ocidental</div>
+<div class="host">Sede: Suíça</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Alemanha Ocidental<br>
+<strong>Vice:</strong> Hungria<br>
+<strong>Final:</strong> Alemanha Ocidental 3 x 2 Hungria<br>
+<strong>Destaque:</strong> final conhecida como o Milagre de Berna.
+</div>
+<img src="alemanha54.jpg.jpeg">Espaço para imagem da Copa de 1954</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1958</div>
+<div class="champion">Brasil</div>
+<div class="host">Sede: Suécia</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Brasil<br>
+<strong>Vice:</strong> Suécia<br>
+<strong>Final:</strong> Brasil 5 x 2 Suécia<br>
+<strong>Destaque:</strong> primeiro título do Brasil em Copas.
+</div>
+<img src="brasil58.jpg.jpeg">Espaço para imagem da Copa de 1958</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1962</div>
+<div class="champion">Brasil</div>
+<div class="host">Sede: Chile</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Brasil<br>
+<strong>Vice:</strong> Tchecoslováquia<br>
+<strong>Final:</strong> Brasil 3 x 1 Tchecoslováquia<br>
+<strong>Destaque:</strong> bicampeonato brasileiro.
+</div>
+<img src="brasil62.webp">Espaço para imagem da Copa de 1962</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1966</div>
+<div class="champion">Inglaterra</div>
+<div class="host">Sede: Inglaterra</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Inglaterra<br>
+<strong>Vice:</strong> Alemanha Ocidental<br>
+<strong>Final:</strong> Inglaterra 4 x 2 Alemanha Ocidental<br>
+<strong>Destaque:</strong> único título mundial inglês.
+</div>
+<img src="inglaterra66.webp">Espaço para imagem da Copa de 1966</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1970</div>
+<div class="champion">Brasil</div>
+<div class="host">Sede: México</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Brasil<br>
+<strong>Vice:</strong> Itália<br>
+<strong>Final:</strong> Brasil 4 x 1 Itália<br>
+<strong>Destaque:</strong> uma das seleções mais famosas da história.
+</div>
+<img src="brasil70.webp">Espaço para imagem da Copa de 1970</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1974</div>
+<div class="champion">Alemanha Ocidental</div>
+<div class="host">Sede: Alemanha Ocidental</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Alemanha Ocidental<br>
+<strong>Vice:</strong> Holanda<br>
+<strong>Final:</strong> Alemanha Ocidental 2 x 1 Holanda<br>
+<strong>Destaque:</strong> final contra a famosa Laranja Mecânica.
+</div>
+<img src="alemanha74.webp">Espaço para imagem da Copa de 1974</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1978</div>
+<div class="champion">Argentina</div>
+<div class="host">Sede: Argentina</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Argentina<br>
+<strong>Vice:</strong> Holanda<br>
+<strong>Final:</strong> Argentina 3 x 1 Holanda<br>
+<strong>Destaque:</strong> primeiro título da Argentina.
+</div>
+<img src="argentina78.webp">Espaço para imagem da Copa de 1978</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1982</div>
+<div class="champion">Itália</div>
+<div class="host">Sede: Espanha</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Itália<br>
+<strong>Vice:</strong> Alemanha Ocidental<br>
+<strong>Final:</strong> Itália 3 x 1 Alemanha Ocidental<br>
+<strong>Destaque:</strong> campanha marcante liderada por Paolo Rossi.
+</div>
+<img src="espanha82.webp">Espaço para imagem da Copa de 1982</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1986</div>
+<div class="champion">Argentina</div>
+<div class="host">Sede: México</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Argentina<br>
+<strong>Vice:</strong> Alemanha Ocidental<br>
+<strong>Final:</strong> Argentina 3 x 2 Alemanha Ocidental<br>
+<strong>Destaque:</strong> edição eternizada por Maradona.
+</div>
+<img src="argentina86.webp">Espaço para imagem da Copa de 1986</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1990</div>
+<div class="champion">Alemanha Ocidental</div>
+<div class="host">Sede: Itália</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Alemanha Ocidental<br>
+<strong>Vice:</strong> Argentina<br>
+<strong>Final:</strong> Alemanha Ocidental 1 x 0 Argentina<br>
+<strong>Destaque:</strong> última Copa antes da unificação alemã.
+</div>
+<img src="alemanha90.webp">Espaço para imagem da Copa de 1990</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1994</div>
+<div class="champion">Brasil</div>
+<div class="host">Sede: Estados Unidos</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Brasil<br>
+<strong>Vice:</strong> Itália<br>
+<strong>Final:</strong> Brasil venceu nos pênaltis após 0 x 0<br>
+<strong>Destaque:</strong> tetracampeonato brasileiro.
+</div>
+<img src="brasil94.webp">Espaço para imagem da Copa de 1994</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">1998</div>
+<div class="champion">França</div>
+<div class="host">Sede: França</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> França<br>
+<strong>Vice:</strong> Brasil<br>
+<strong>Final:</strong> França 3 x 0 Brasil<br>
+<strong>Destaque:</strong> primeiro título francês.
+</div>
+<img src="frança98.webp">Espaço para imagem da Copa de 1998</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">2002</div>
+<div class="champion">Brasil</div>
+<div class="host">Sede: Coreia do Sul e Japão</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Brasil<br>
+<strong>Vice:</strong> Alemanha<br>
+<strong>Final:</strong> Brasil 2 x 0 Alemanha<br>
+<strong>Destaque:</strong> pentacampeonato brasileiro.
+</div>
+<img src="brasil02.webp">Espaço para imagem da Copa de 2002</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">2006</div>
+<div class="champion">Itália</div>
+<div class="host">Sede: Alemanha</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Itália<br>
+<strong>Vice:</strong> França<br>
+<strong>Final:</strong> Itália venceu nos pênaltis após 1 x 1<br>
+<strong>Destaque:</strong> final marcante e muito lembrada.
+</div>
+<img src="italia06.webp">Espaço para imagem da Copa de 2006</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">2010</div>
+<div class="champion">Espanha</div>
+<div class="host">Sede: África do Sul</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Espanha<br>
+<strong>Vice:</strong> Holanda<br>
+<strong>Final:</strong> Espanha 1 x 0 Holanda<br>
+<strong>Destaque:</strong> primeiro título espanhol e primeira Copa em solo africano.
+</div>
+<img src="espanha10.webp">Espaço para imagem da Copa de 2010</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">2014</div>
+<div class="champion">Alemanha</div>
+<div class="host">Sede: Brasil</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Alemanha<br>
+<strong>Vice:</strong> Argentina<br>
+<strong>Final:</strong> Alemanha 1 x 0 Argentina<br>
+<strong>Destaque:</strong> título alemão em uma Copa muito marcante no Brasil.
+</div>
+<img src="alemanha14.webp">Espaço para imagem da Copa de 2014</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">2018</div>
+<div class="champion">França</div>
+<div class="host">Sede: Rússia</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> França<br>
+<strong>Vice:</strong> Croácia<br>
+<strong>Final:</strong> França 4 x 2 Croácia<br>
+<strong>Destaque:</strong> segundo título francês.
+</div>
+<img src="frança18.webp">Espaço para imagem da Copa de 2018</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-top">
+<div class="year">2022</div>
+<div class="champion">Argentina</div>
+<div class="host">Sede: Catar</div>
+</div>
+<div class="extra">
+<div class="extra-inner">
+<div class="details">
+<strong>Campeão:</strong> Argentina<br>
+<strong>Vice:</strong> França<br>
+<strong>Final:</strong> Argentina venceu nos pênaltis após 3 x 3<br>
+<strong>Destaque:</strong> uma das finais mais famosas da história recente.
+</div>
+<img src="argentina22 - Copia.webp">Espaço para imagem da Copa de 2022</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<footer>
+<div>História do futebol</div>
+<div>Copa do Mundo</div>
+<div>Timeline completa</div>
+</footer>
+
+</body>
+</html>
